@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "node papa-maker.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
