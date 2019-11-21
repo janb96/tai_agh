@@ -13,7 +13,18 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/elo', (req, res, next) => {
-    axios.get('http://localhost:5000')
+    axios.get('http://docker-desktop:5000')
+        .then(response => {
+            res.send(response.data)
+        })
+        .catch(error => {
+            console.log(error);
+            res.send(error);
+        });
+});
+
+router.get('/papa', (req, res, next) => {
+    axios.get('http://docker-desktop:5001')
         .then(response => {
             res.send(response.data)
         })
