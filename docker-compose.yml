@@ -7,6 +7,12 @@ services:
       replicas: 2
     ports:
       - 5002:3000
+  kitchens:
+    image: kitchens
+    deploy:
+      replicas: 2
+    ports:
+      - 5003:3000
   hello:
     image: hello
     deploy:

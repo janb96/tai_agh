@@ -1,9 +1,11 @@
+#!/usr/bin/env bash
 echo -e $"Docker Swarm Initialization"
 docker swarm init
 echo -e $"Creating Docker Image"
 docker build -t hello -f hello-maker/Dockerfile hello-maker
 docker build -t papa -f papa-maker/Dockerfile papa-maker
 docker build -t products -f products-microservice/Dockerfile products-microservice
+docker build -t kitchens -f kitchens-microservice/Dockerfile kitchens-microservice
 echo -e $"Starting the stack"
 docker stack deploy -c ./docker-compose.yml talk
 echo -e $"Finish"
