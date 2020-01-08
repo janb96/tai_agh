@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-let kitchens = require('../../models/kitchens.js');
+var kitchens = require('../../models/kitchens.js');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -16,7 +16,6 @@ router.post('/kitchen', (req, res, next) => {
     kitchens.create(kitchen).then(
         result => res.send(result)
     );
-
 });
 
 router.get('/kitchen', function(req, res, next) {
@@ -57,3 +56,4 @@ router.get('/kitchen/received', function(req, res, next) {
         );
 });
 
+module.exports = router;

@@ -11,7 +11,7 @@ let Kitchens = sequelize.define('Kitchens', {
     productID: Sequelize.INTEGER,
     productReady: {
             type: Sequelize.INTEGER,
-            defaultValue: 1
+            defaultValue: 1,
             validate: {
                         min: 1,
                         max: 3
@@ -19,9 +19,9 @@ let Kitchens = sequelize.define('Kitchens', {
             /* 1 - toDo; 2 -forRelease; 3 - received */
         },
 
-    dateOfAdmission: Sequelize.DATETIME,
-    dateOfExecution: Sequelize.DATETIME,
-    dateOfReceipt: Sequelize.DATETIME,
+    dateOfAdmission: Sequelize.DATE,
+    dateOfExecution: Sequelize.DATE,
+    dateOfReceipt: Sequelize.DATE,
 
 });
 
