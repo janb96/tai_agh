@@ -17,11 +17,10 @@ let Kitchens = sequelize.define('Kitchens', {
                         max: 3
                     }
             /* 1 - toDo; 2 -forRelease; 3 - received */
-        },
+    },
 
     dateOfAdmission: Sequelize.DATE,
-    dateOfExecution: Sequelize.DATE,
-    dateOfReceipt: Sequelize.DATE,
+    dateOfExecution: Sequelize.DATE
 
 });
 

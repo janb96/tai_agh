@@ -11,6 +11,7 @@ router.post('/kitchen', (req, res, next) => {
     const kitchen = {
         productID: productID,
         productReady: 1,
+        dateOfAdmission: Date.now()
     };
 
     kitchens.create(kitchen).then(
@@ -18,12 +19,26 @@ router.post('/kitchen', (req, res, next) => {
     );
 });
 
-router.get('/kitchen', function(req, res, next) {
-    kitchens.findAll({
-        order: Sequelize.col('kitchenID')
+router.put('/kitchen', (req, res, next) => {
+    const kitchenID = req.body.productReady;
+    const productReady = req.body.productReady;
+
+    const kitchen = {
+        productReady: productReady,
+    };
+
+    kitchens.update(kitchen, {
+        where: {
+           kitchenID: kitchenID 
+        }
     }).then(
         result => res.send(result)
     );
+});
+
+router.get('/kitchen', async function(req, res, next) {
+    let result = await kitchens.findAll();
+    res.send(result);
 });
 
 router.get('/kitchen/toDo', function(req, res, next) {
