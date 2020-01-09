@@ -12,27 +12,41 @@ router.get('/', (req, res, next) => {
     );
 });
 
-router.get('/elo', (req, res, next) => {
-    axios.get('http://docker-desktop:5000')
-        .then(response => {
-            res.send(response.data)
-        })
-        .catch(error => {
-            console.log(error);
-            res.send(error);
-        });
+router.get('/byCategoryID/:categoryID', (req, res, next) => {
+    
+    const categoryID = req.params.categoryID;
+
+    categories.findAll({
+        where: {
+            categoryID: categoryID
+        }
+    }).then(
+        result => res.send(result)
+    );
+
 });
 
-router.get('/papa', (req, res, next) => {
-    axios.get('http://docker-desktop:5001')
-        .then(response => {
-            res.send(response.data)
-        })
-        .catch(error => {
-            console.log(error);
-            res.send(error);
-        });
-});
+// router.get('/elo', (req, res, next) => {
+//     axios.get('http://docker-desktop:5000')
+//         .then(response => {
+//             res.send(response.data)
+//         })
+//         .catch(error => {
+//             console.log(error);
+//             res.send(error);
+//         });
+// });
+
+// router.get('/papa', (req, res, next) => {
+//     axios.get('http://docker-desktop:5001')
+//         .then(response => {
+//             res.send(response.data)
+//         })
+//         .catch(error => {
+//             console.log(error);
+//             res.send(error);
+//         });
+// });
 
 router.post('/', (req, res, next) => {
     const name = req.body.categoryName;
