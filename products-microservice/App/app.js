@@ -6,8 +6,10 @@ var logger = require('morgan');
 
 var productsRouter = require('./routes/api/products');
 var categoriesRouter = require('./routes/api/categories');
+const cors = require('cors');
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -27,7 +27,7 @@ router.get('/byProductID/:productID', (req, res, next) => {
     );
 });
 
-router.get('/byCategoryID/:categoryID', (req, res, next) => {
+router.get('/:categoryID', (req, res, next) => {
 
     const categoryID = req.params.categoryID;
 
