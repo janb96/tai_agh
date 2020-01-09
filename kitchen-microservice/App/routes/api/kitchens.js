@@ -65,7 +65,7 @@ router.post('/kitchen', (req, res, next) => {
 // });
 
 router.put('/kitchen', (req, res, next) => {
-    const kitchenID = req.body.productReady;
+    const kitchenID = req.body.kitchenID;
     const productReady = req.body.productReady;
 
     const kitchen = {
