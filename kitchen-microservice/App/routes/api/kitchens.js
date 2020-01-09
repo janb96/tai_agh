@@ -7,9 +7,11 @@ const Op = Sequelize.Op;
 
 router.post('/kitchen', (req, res, next) => {
     const productID = req.body.productID;
+    const numberOfProducts = req.body.numberOfProducts;
 
     const kitchen = {
         productID: productID,
+        numberOfProducts: numberOfProducts,
         productReady: 1,
         dateOfAdmission: Date.now()
     };
@@ -18,6 +20,49 @@ router.post('/kitchen', (req, res, next) => {
         result => res.send(result)
     );
 });
+
+// async function function1() {
+//     console.log("FUNCTION1");
+//     return "Hi from function1";
+// }
+
+// async function function2() {
+//     this.setTimeout(function1, 3000);
+// }
+
+
+// router.get('/test', (req, res, next) => {
+
+//     let start = new Date();
+
+//     setTimeout(function() {
+//         let end = new Date() - start;
+//         res.send(end.toString());
+//     }, 10000);
+
+    
+// });
+
+// function is73(number) {
+//     if (number%73 == 0) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+// router.get('/test2', (req, res, next) => {
+
+//     let start = new Date();
+
+//     for (let i = 0; i < 1000000; i++) {
+//         console.log(is73(i));
+//     }
+
+//     let end = new Date() - start;
+//     res.send(end.toString());
+    
+// });
 
 router.put('/kitchen', (req, res, next) => {
     const kitchenID = req.body.productReady;

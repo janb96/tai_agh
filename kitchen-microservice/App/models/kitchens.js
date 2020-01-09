@@ -9,6 +9,7 @@ let Kitchens = sequelize.define('Kitchens', {
         autoIncrement: true
     },
     productID: Sequelize.INTEGER,
+    numberOfProducts: Sequelize.INTEGER,
     productReady: {
             type: Sequelize.INTEGER,
             defaultValue: 1,
