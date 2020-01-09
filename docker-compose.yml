@@ -4,27 +4,35 @@ services:
   products:
     image: products
     deploy:
-      replicas: 2
+      replicas: 1
     ports:
       - 5002:3000
-  kitchens:
-    image: kitchens
+  kitchen:
+    image: kitchen
     deploy:
-      replicas: 2
+      replicas: 4
     ports:
       - 5003:3000
   hello:
     image: hello
     deploy:
-      replicas: 3
+      replicas: 1
     ports:
       - 5000:3000
   papa:
     image: papa
     deploy:
-      replicas: 2
+      replicas: 1
     ports:
       - 5001:3000
+  makeorder:
+    image: makeorder
+    deploy:
+      replicas: 1
+    ports:
+      - 5004:80
+    volumes:
+      - ./makeorder-microservice:/var/www/html
   visualizer:
     image: dockersamples/visualizer
     deploy:
