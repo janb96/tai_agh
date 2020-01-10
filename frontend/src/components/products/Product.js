@@ -1,8 +1,7 @@
-// import axios from 'axios';
-
 import React, {
     Component,
 } from 'react';
+
 import axios from "axios";
 
 class Product extends Component {
@@ -82,7 +81,7 @@ class Product extends Component {
     async handleEdit() {
         if(this.state.productName !== '' &&
             this.state.productPrice !== '') {
-            await axios.put('/products',{
+            await axios.put('http://localhost:5002/products',{
                 productID: this.props.productID,
                 productName: this.state.productName,
                 categoryID: this.props.categoryID,

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Products from "../products/Products";
 import Categories from "../categories/Categories";
-import axios from "axios";
 
 class Menu extends Component {
     constructor(props) {

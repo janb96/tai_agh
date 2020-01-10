@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Orders from "../orders/Orders";
 
 import { Redirect } from 'react-router-dom';
-import axios from "axios";
 import Products from "../products/Products";
 
 class ChefPanel extends Component {

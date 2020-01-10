@@ -17,7 +17,7 @@ class Categories extends Component {
     }
 
     async getCategoriesList() {
-        const promise = await axios.get('/categories');
+        const promise = await axios.get('http://localhost:5002/categories');
         const response = promise.data;
         if (this.props.additionalCategory) {
             this.setState({categories: [...response, this.props.additionalCategory]});

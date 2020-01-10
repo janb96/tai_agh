@@ -7,10 +7,16 @@ services:
       replicas: 1
     ports:
       - 5002:3000
+  frontend:
+    image: frontend
+    deploy:
+      replicas: 1
+    ports:
+      - 3000:3000
   kitchen:
     image: kitchen
     deploy:
-      replicas: 4
+      replicas: 1
     ports:
       - 5003:3000
   hello:

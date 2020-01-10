@@ -59,7 +59,7 @@ class Products extends Component {
     }
 
     async getProductsList() {
-        const promise = await axios.get('http://localhost:4000/products' + this.props.afterLink);
+        const promise = await axios.get('http://localhost:5002/products' + this.props.afterLink);
         const response = promise.data;
 
         this.setState({
