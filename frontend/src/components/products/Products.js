@@ -93,24 +93,30 @@ class Products extends Component {
         const date = new Date();
         const tableID = this.state.tableNumber;
 
+        let productsArray = [];
 
-        //TUTAJ DODAC ORDER
-        // let response = await axios.post("http://localhost:5000/orders" , {
-        //     orderStatus: "OPEN",
-        //     orderPrice: price,
-        //     tableID: tableID
-        // });
-
-        //  this.setState({
-        //      postResponse: "Order created",
-        //      orderID: response.data.orderID
-        //  });
         for(let i = 0; i < this.state.orders.length; i++){
+            const toArray = {
+                "productID": this.state.orders[i].productID,
+                "numberOfProducts": this.state.orders[i].number
+            };
+            productsArray.push(toArray);
             axios.post("http://localhost:5003/kitchen" , {
                 productID: this.state.orders[i].productID,
                 numberOfProducts: this.state.orders[i].number,
             });
+
         }
+
+        let response = await axios.post("http://localhost:5004" , {
+            orderPrice: price,
+            productsArray: productsArray
+        });
+
+        this.setState({
+             postResponse: "Order created"
+        });
+
     }
 
     orderHandler(productID, productPrice, number, productName) {
