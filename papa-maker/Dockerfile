@@ -1,6 +1,0 @@
-FROM node:8
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY papa-maker.js ./
-CMD ["npm", "start"]
