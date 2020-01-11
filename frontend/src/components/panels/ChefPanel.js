@@ -64,7 +64,7 @@ class ChefPanel extends Component {
                         <Orders afterLink="/forRelease"/>
                     </div>
                     <div className="col-3">
-                        <h2 className="text-center">Done</h2>
+                        <h2 className="text-center">Delivered</h2>
                         <Orders afterLink="/received"/>
                     </div>
                     <div className="col-3">
