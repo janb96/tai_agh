@@ -15,6 +15,7 @@ RUN npm install --silent
 RUN npm install react-scripts@3.0.1 -g --silent
 RUN npm install vis-network
 RUN npm install axios
+RUN npm install sweetalert
 
 EXPOSE 3000
 
