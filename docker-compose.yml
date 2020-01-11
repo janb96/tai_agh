@@ -19,18 +19,6 @@ services:
       replicas: 1
     ports:
       - 5003:3000
-  hello:
-    image: hello
-    deploy:
-      replicas: 1
-    ports:
-      - 5000:3000
-  papa:
-    image: papa
-    deploy:
-      replicas: 1
-    ports:
-      - 5001:3000
   makeorder:
     image: makeorder
     deploy:
@@ -39,6 +27,18 @@ services:
       - 5004:80
     volumes:
       - ./makeorder-microservice:/var/www/html
+  graph-microservice:
+    image: graph-microservice
+    deploy:
+      replicas: 4
+    ports:
+      - 4000:4000
+  car-microservice:
+    image: car-microservice
+    deploy:
+      replicas: 1
+    ports:
+      - 5000:5000
   visualizer:
     image: dockersamples/visualizer
     deploy:
