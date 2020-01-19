@@ -19,6 +19,12 @@ services:
       replicas: 1
     ports:
       - 5003:3000
+  auth:
+    image: auth
+    deploy:
+      replicas: 1
+    ports:
+      - 5005:3000
   makeorder:
     image: makeorder
     deploy:

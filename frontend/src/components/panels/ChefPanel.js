@@ -4,6 +4,7 @@ import Orders from "../orders/Orders";
 
 import { Redirect } from 'react-router-dom';
 import Products from "../products/Products";
+import Header from '../header/Header';
 
 class ChefPanel extends Component {
 
@@ -11,7 +12,7 @@ class ChefPanel extends Component {
         super();
         this.state = {
             panelManager: "",
-            isChef: true
+            isLogin: true
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleReload = this.handleReload.bind(this);
@@ -35,8 +36,9 @@ class ChefPanel extends Component {
 
     componentDidMount(){
         const roleID = window.sessionStorage.getItem('roleID');
-        if (roleID !== '2') {
-            this.setState({isChef: false});
+        console.log(roleID);
+        if (roleID !== '1') {
+            this.setState({isLogin: false});
         }
         this.timerID = setInterval(
             () => this.tick(),
@@ -45,9 +47,15 @@ class ChefPanel extends Component {
     }
 
     render() {
+
+        const isLogin = this.state.isLogin;
+        if (!isLogin) {
+            return <Redirect to='/'/>
+        }
+
         return (
             <div>
-
+                <Header/>
                 <div className="container text-center">
                     <br/>
                     <h1>Chef <span className="badge badge-secondary">Panel</span></h1>

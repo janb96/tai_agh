@@ -1,0 +1,61 @@
+BEGIN TRANSACTION;
+
+CREATE TABLE IF NOT EXISTS "Categories" (
+    "categoryID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "categoryName" TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "Orders" (
+    "orderID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "orderStatus" TEXT NOT NULL DEFAULT "OPEN",
+    "tableID" INTEGER NOT NULL,
+    "userID" INTEGER NOT NULL DEFAULT 0,
+    "orderDate" NUMERIC,
+    "orderPrice" DOUBLE NOT NULL,
+    FOREIGN KEY("tableID") REFERENCES "Tables"("tableID")
+);
+
+CREATE TABLE IF NOT EXISTS "OrdersDetails" (
+    "orderDetailID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "orderID" INTEGER,
+    "productID" INTEGER,
+    "numberOfProducts" INTEGER NOT NULL DEFAULT 1,
+    "orderDetailPrice" DOUBLE NOT NULL,
+    FOREIGN KEY("orderID") REFERENCES "Orders"("orderID"),
+    FOREIGN KEY("productID") REFERENCES "Products"("productID")
+);
+
+CREATE TABLE IF NOT EXISTS "Products" (
+    "productID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "categoryID" INTEGER NOT NULL,
+    "productName" TEXT NOT NULL,
+    "productPrice" DOUBLE NOT NULL,
+    "productStatus" INTEGER NOT NULL DEFAULT 1,
+    "productURL" TEXT NOT NULL,
+    FOREIGN KEY("categoryID") REFERENCES "Categories"("categoryID")
+);
+
+CREATE TABLE IF NOT EXISTS "Roles" (
+    "roleID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "roleName" TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "Tables" (
+    "tableID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "tableStatus" INTEGER DEFAULT 1
+);
+
+CREATE TABLE IF NOT EXISTS "Users" (
+	"userID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"userName" TEXT NOT NULL,
+	"firstName" TEXT,
+	"surName" TEXT,
+	"roleID" INTEGER NOT NULL DEFAULT 1,
+	"email" TEXT NOT NULL,
+	"password" TEXT NOT NULL,
+	"active" INTEGER,
+    FOREIGN KEY("roleID") REFERENCES "Roles"("roleID")
+);
+
+COMMIT;
+

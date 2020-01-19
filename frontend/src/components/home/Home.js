@@ -28,8 +28,8 @@ class Home extends Component {
                             </Link>
                     </div>
                     <div className="col-6">
-                        <Link to="/chef">
-                            <h2>Chef in</h2>
+                        <Link to="/signin">
+                            <h2>Sign in</h2>
                             <img src={photo2} className="img-fluid" alt="Sign in"/>
                         </Link>
                     </div>
